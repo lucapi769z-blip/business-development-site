@@ -462,14 +462,19 @@ Version 1 will include a structured professional contact form.
 
 This is NOT an opportunity marketplace or a public opportunity-submission platform.
 
-The form may classify enquiries by type, such as:
+The form may classify enquiries by type, aligned with the service architecture defined in document 02:
 
+- Business Development;
 - Market Entry;
 - Partner Search;
-- Business Development;
+- Strategic Partnerships;
 - Publishing & Rights;
-- International Opportunity;
+- Author & Publishing Opportunities;
 - Other.
+
+"Publishing & Rights" is the shorter public / contact-form label. The formal service name remains "Publishing & Rights Development".
+
+International context is captured through country, target market and the opportunity description, rather than through a separate "International Opportunity" category.
 
 ## 3. Build Credibility
 
