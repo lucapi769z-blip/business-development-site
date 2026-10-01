@@ -71,22 +71,39 @@ These correspond to the secondary direction, Italy → International, and to gen
 
 These audiences are served by a dedicated page and a dedicated Home feature, reached through their own primary navigation item. They are important, but publishing must NOT visually dominate the brand.
 
-## Institutional readers
+## Institutional Organisations
 
-The site may also be read by:
+Institutional and para-institutional organisations include:
 
-- public-sector related organisations;
-- para-ministerial bodies;
 - chambers of commerce;
-- industry and trade organisations;
+- trade and industry organisations;
 - foundations;
 - professional associations;
-- institutional stakeholders;
-- large established companies.
+- cultural institutions;
+- public-sector related organisations;
+- para-ministerial bodies.
 
-These readers are NOT an additional service audience and do not change the six-audience architecture of document 02.
+They have a dual role.
 
-They are an evaluating readership. The site must withstand their scrutiny: it must be precise, restrained, verifiable and free of exaggerated claims (see section 22).
+### 1. Evaluating readership
+
+The website must be credible and appropriate for institutional and para-institutional readers. The site must withstand their scrutiny: it must be precise, restrained, verifiable and free of exaggerated claims (see section 22).
+
+The same standard applies to large established companies reading the site.
+
+### 2. Secondary commissioning audience
+
+They may also commission work within the existing services, as defined in document 02 ("Secondary Institutional Audience").
+
+### Constraints
+
+- they are not a seventh primary audience;
+- they do not create a seventh service;
+- they do not receive a dedicated primary navigation item;
+- they do not receive a dedicated V1 page;
+- the site must not imply accreditation, mandates or official institutional relationships that do not exist.
+
+Institutional enquiries use the existing contact form, through the Company / Organisation field and the existing enquiry categories.
 
 ## How audiences find their entry point
 
@@ -100,6 +117,7 @@ No audience receives its own page or navigation item in V1.
 | D. Entrepreneurs and new initiatives | Home §4 What We Do | What We Do — Business Development |
 | E. Publishers | Primary nav — Publishing & Rights | Home §7 Publishing Feature |
 | F. Authors | Primary nav — Publishing & Rights | Home §7 Publishing Feature; Contact (author category) |
+| Institutional organisations (secondary) | What We Do — Business Development, Strategic Partnerships | Publishing & Rights; Founder; Contact |
 
 ---
 
@@ -1110,6 +1128,7 @@ INSTITUTIONAL CREDIBILITY
 - chatbots or live chat;
 - social-media feeds or embeds;
 - invented legal, registration or corporate details;
+- any implication of public-sector accreditation, institutional mandates, official endorsements, official institutional partnerships, public authority or institutional representation, unless factually true and verified;
 - promised response times, unless formally approved.
 
 ---

@@ -35,6 +35,7 @@ The following principles apply to every audience and every service.
 - Compensation models are not finalised in this document.
 - Existing customers, partners, success rates, networks or geographic coverage must never be invented.
 - The brand is Founder-led by Luca Pistonesi. "We" refers to the independent brand and must never imply employees, offices, a permanent team or resources that do not exist.
+- The brand must never imply public-sector accreditation, institutional mandates, official endorsement, official institutional relationships, public authority or formal institutional representation, unless such status or relationship actually exists and can be verified.
 
 ---
 
@@ -386,6 +387,8 @@ D. Entrepreneurs and Companies Developing New Initiatives
 E. Publishers
 F. Authors
 
+A secondary institutional audience is defined at the end of this section (see "Secondary Institutional Audience").
+
 Where an enquirer could fit more than one audience, the audience is chosen by the nature of the request:
 
 - a request centred on a specific product or brand and its channels belongs to B;
@@ -718,6 +721,44 @@ Where an engagement is agreed:
 
 ---
 
+## Secondary Institutional Audience
+
+The six primary audiences remain unchanged.
+
+Institutional and para-institutional organisations may also commission work where their needs fit the existing service architecture.
+
+This secondary audience may include:
+
+- chambers of commerce;
+- trade and industry organisations;
+- foundations;
+- professional associations;
+- cultural institutions;
+- public-sector related organisations;
+- para-ministerial bodies;
+- selected institutional stakeholders.
+
+They may commission work only within the existing services, particularly:
+
+- Business Development;
+- Business Development applied to international initiatives;
+- Strategic Partnerships;
+- Publishing & Rights Development.
+
+This does NOT create:
+
+- a seventh service;
+- a new institutional service category;
+- a dedicated institutional service page.
+
+They are a secondary audience, not the principal commercial audience.
+
+The same Qualified Opportunity Criteria (section 10) and Reasons to Decline (section 11) apply.
+
+The brand must not imply accreditation, public-sector mandates, official endorsement or institutional relationships unless these actually exist.
+
+---
+
 # 4. Audience–Service Matrix
 
 | Audience | Business Development | Market Entry | Partner Search | Strategic Partnerships | Publishing & Rights Development | Author & Publishing Opportunities |
@@ -728,8 +769,11 @@ Where an engagement is agreed:
 | D. Entrepreneurs and new initiatives | ◉ | | | | | |
 | E. Publishers | | | ● | ● | ◉ | |
 | F. Authors | | | | | | ◉ |
+| Institutional organisations (secondary) | ● | | | ● | ● | |
 
 ◉ primary service · ● relevant service
+
+Institutional organisations have no mandatory single primary service; the primary service is determined per engagement.
 
 ---
 
