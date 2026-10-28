@@ -1,9 +1,21 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getDict } from "@/content";
-import { isLocale, pageForSlug, slugParams, type Locale } from "@/lib/i18n";
+import { alternates, isLocale, pageForSlug, slugParams, type Locale } from "@/lib/i18n";
 import { ContactForm } from "@/components/ContactForm";
-import { Areas, Founder, LetsTalk, PageIntro, Process, Publishing, Services } from "@/components/sections";
+import {
+  Categories,
+  Focus,
+  LegalText,
+  LetsTalk,
+  Manufacturers,
+  NumberedList,
+  PageIntro,
+  Perspective,
+  Process,
+  Profile,
+  Services,
+} from "@/components/sections";
 
 export function generateStaticParams() {
   return slugParams();
@@ -20,49 +32,69 @@ async function resolve(params: PageProps<"/[lang]/[slug]">["params"]) {
 }
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/[slug]">): Promise<Metadata> {
-  const { page, dict } = await resolve(params);
-  return { title: dict.meta[page].title, description: dict.meta[page].description };
+  const { locale, page, dict } = await resolve(params);
+  const { title, description } = dict.meta[page];
+  return { title, description, alternates: alternates(locale, page), openGraph: { title, description } };
 }
 
 export default async function InnerPage({ params }: PageProps<"/[lang]/[slug]">) {
   const { locale, page, dict } = await resolve(params);
   const props = { locale, dict };
-  const intro = dict.pages[page];
 
   switch (page) {
-    case "whatWeDo":
+    case "products":
       return (
         <>
-          <PageIntro {...intro} />
+          <PageIntro {...dict.pages.products} />
+          <Categories {...props} detailed />
+          <LetsTalk {...props} />
+        </>
+      );
+    case "services":
+      return (
+        <>
+          <PageIntro {...dict.pages.services} />
           <Services {...props} intro={false} />
           <Process {...props} />
-          <Areas {...props} />
           <LetsTalk {...props} />
         </>
       );
-    case "publishing":
+    case "manufacturers": {
+      const m = dict.pages.manufacturers;
       return (
         <>
-          <PageIntro {...intro} />
-          <Publishing {...props} withLink={false} />
+          <PageIntro {...m} />
+          <NumberedList {...m.who} />
+          <Manufacturers {...props} withLink={false} />
+          <NumberedList {...m.prepare} />
+          <Perspective {...props} id="opportunities" />
           <LetsTalk {...props} />
         </>
       );
-    case "founder":
+    }
+    case "about":
       return (
         <>
-          <Founder {...props} withLink={false} />
+          <Profile {...props} withLink={false} />
+          <Focus {...props} />
           <LetsTalk {...props} />
         </>
       );
     case "contact":
       return (
         <>
-          <PageIntro {...intro} />
-          <ContactForm dict={dict} />
+          <PageIntro {...dict.pages.contact} />
+          <ContactForm locale={locale} dict={dict} />
         </>
       );
-    default:
-      return <PageIntro {...intro} />;
+    default: {
+      const legal = dict.pages[page];
+      return (
+        <>
+          <PageIntro {...legal} />
+          <LegalText sections={legal.sections} />
+        </>
+      );
+    }
   }
 }

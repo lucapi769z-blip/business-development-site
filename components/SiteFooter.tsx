@@ -2,15 +2,41 @@ import Link from "next/link";
 import type { Dict } from "@/content";
 import { pathFor, type Locale } from "@/lib/i18n";
 import { LanguageSwitch } from "./LanguageSwitch";
-import { ButtonLink, Fan } from "./ui";
+import { Fan } from "./ui";
 
 export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dict }) {
   const f = dict.footer;
-  const whatWeDo = pathFor(locale, "whatWeDo");
-  const publishing = pathFor(locale, "publishing");
-  const exploreLinks = [
-    { href: whatWeDo, label: dict.nav.whatWeDo },
-    ...dict.services.items.slice(0, 4).map((s) => ({ href: `${whatWeDo}#service-${s.number}`, label: s.name })),
+  const products = pathFor(locale, "products");
+  const contact = pathFor(locale, "contact");
+  const columns = [
+    {
+      heading: f.company,
+      links: [
+        { href: pathFor(locale, "about"), label: f.companyLinks.about },
+        { href: `${pathFor(locale, "services")}#how-we-work`, label: f.companyLinks.method },
+        { href: contact, label: f.companyLinks.contact },
+      ],
+    },
+    {
+      heading: f.categories,
+      links: f.categoryNames.map((label, i) => ({ href: `${products}#${dict.categories[i].id}`, label })),
+    },
+    {
+      heading: f.manufacturers,
+      links: [
+        { href: contact, label: f.manufacturerLinks.present },
+        { href: `${pathFor(locale, "manufacturers")}#opportunities`, label: f.manufacturerLinks.opportunities },
+        { href: `${contact}#form`, label: f.manufacturerLinks.request },
+      ],
+    },
+    {
+      heading: f.legal,
+      links: [
+        { href: pathFor(locale, "privacy"), label: f.legalLinks.privacy },
+        { href: pathFor(locale, "cookies"), label: f.legalLinks.cookies },
+        { href: pathFor(locale, "legal"), label: f.legalLinks.legal },
+      ],
+    },
   ];
 
   return (
@@ -26,48 +52,21 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dict }) {
             <span className="accent-rule" aria-hidden="true" />
             <p className="footer-founded">{f.founded}</p>
           </div>
-          <div className="footer-col">
-            <p className="footer-heading">{f.explore}</p>
-            <ul>
-              {exploreLinks.map((l) => (
-                <li key={l.label}>
-                  <Link href={l.href}>{l.label}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="footer-col">
-            <p className="footer-heading">{f.publishing}</p>
-            <ul>
-              {f.publishingLinks.map((label) => (
-                <li key={label}>
-                  <Link href={publishing}>{label}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="footer-col footer-contact">
-            <p className="footer-heading">{f.contact}</p>
-            <p className="footer-contact-text">
-              {f.contactText[0]}
-              <br />
-              {f.contactText[1]}
-            </p>
-            <ButtonLink href={pathFor(locale, "contact")} outline className="button--footer">
-              {f.contactButton}
-            </ButtonLink>
-            <LanguageSwitch label={dict.a11y.language} className="lang-switch--footer" />
-          </div>
+          {columns.map((col) => (
+            <nav key={col.heading} className="footer-col" aria-label={col.heading}>
+              <p className="footer-heading">{col.heading}</p>
+              <ul>
+                {col.links.map((l) => (
+                  <li key={l.label}>
+                    <Link href={l.href}>{l.label}</Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))}
         </div>
         <div className="footer-bottom">
-          <ul className="footer-legal">
-            <li>
-              <Link href={pathFor(locale, "privacy")}>{f.privacy}</Link>
-            </li>
-            <li>
-              <Link href={pathFor(locale, "legal")}>{f.legal}</Link>
-            </li>
-          </ul>
+          <LanguageSwitch label={dict.a11y.language} className="lang-switch--footer" />
           <p className="footer-meta">
             <span>{f.copyright}</span>
             <span>{f.prototype}</span>

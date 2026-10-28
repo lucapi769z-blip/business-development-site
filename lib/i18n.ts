@@ -1,26 +1,35 @@
-export const locales = ["en", "it"] as const;
+export const locales = ["it", "en"] as const;
 export type Locale = (typeof locales)[number];
 
-export type PageKey = "home" | "whatWeDo" | "publishing" | "founder" | "contact" | "privacy" | "legal";
+/** Italian is the default language: the site addresses the Italian hospital market. */
+export const defaultLocale: Locale = "it";
+
+export type PageKey = "home" | "products" | "services" | "manufacturers" | "about" | "contact" | "privacy" | "cookies" | "legal";
 
 const slugs: Record<Locale, Record<Exclude<PageKey, "home">, string>> = {
   en: {
-    whatWeDo: "what-we-do",
-    publishing: "publishing-rights",
-    founder: "founder",
+    products: "products",
+    services: "services",
+    manufacturers: "for-manufacturers",
+    about: "about",
     contact: "contact",
     privacy: "privacy",
+    cookies: "cookie-policy",
     legal: "legal-notice",
   },
   it: {
-    whatWeDo: "cosa-facciamo",
-    publishing: "editoria-diritti",
-    founder: "fondatore",
+    products: "prodotti",
+    services: "servizi",
+    manufacturers: "per-i-produttori",
+    about: "profilo",
     contact: "contatti",
     privacy: "privacy",
+    cookies: "cookie-policy",
     legal: "note-legali",
   },
 };
+
+export const pageKeys = ["home", ...(Object.keys(slugs.it) as Exclude<PageKey, "home">[])] as PageKey[];
 
 export function isLocale(value: string): value is Locale {
   return (locales as readonly string[]).includes(value);
@@ -39,7 +48,13 @@ export function slugParams() {
   return locales.flatMap((lang) => Object.values(slugs[lang]).map((slug) => ({ lang, slug })));
 }
 
-/** The same page in the other language, for the EN / IT switch. */
-export function alternatePath(target: Locale, page: PageKey): string {
-  return pathFor(target, page);
+/** Absolute site URL, used for canonical links, hreflang alternates and the sitemap. */
+export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "");
+
+/** hreflang alternates for one page, in every language. */
+export function alternates(locale: Locale, page: PageKey) {
+  return {
+    canonical: pathFor(locale, page),
+    languages: Object.fromEntries([...locales.map((l) => [l, pathFor(l, page)]), ["x-default", pathFor(defaultLocale, page)]]),
+  };
 }

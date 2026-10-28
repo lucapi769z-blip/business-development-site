@@ -1,6 +1,8 @@
-/* Visual specification: the approved screenshots of the Business Development site
-   (hero, approach, services, process, areas, dark Publishing & Rights, founder,
-   Let's Talk, petrol footer). Values below are measured from those screenshots. */
+/* Visual specification: the approved screenshots of the original site (hero, approach,
+   services, process, areas, dark band, founder, Let's Talk, petrol footer), kept for the
+   healthcare version. Class names follow the original sections: .approach is now Our Focus,
+   .direction is From Product to Market, .areas the product categories, .publishing the
+   dark For Manufacturers band and .founder the company profile. */
 
 :root {
   --paper: #f7f5f0;
@@ -439,8 +441,8 @@ main:focus {
 .hero-title {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: clamp(48px, 5.75vw, 77px);
-  line-height: 1.06;
+  font-size: clamp(46px, 5.2vw, 72px);
+  line-height: 1.04;
   letter-spacing: -0.03em;
   margin-bottom: 34px;
 }
@@ -707,46 +709,14 @@ main:focus {
   padding-top: 4px;
 }
 
-.services-list .group-title + .service-pair,
 .services-list .group-title + .service-rows {
   margin-top: 0;
 }
 
-.services-list .service-rows + .group-title {
-  margin-top: 44px;
-}
 
-.service-pair {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  padding-top: 30px;
-}
 
-.service-pair li {
-  display: grid;
-  grid-template-columns: 70px minmax(0, 1fr);
-  padding-bottom: 24px;
-  border-bottom: 1px solid var(--rule);
-  position: relative;
-}
 
-.service-pair li + li::before {
-  content: "";
-  position: absolute;
-  left: -20px;
-  top: 0;
-  bottom: 22px;
-  width: 1px;
-  background: var(--rule);
-}
 
-.service-name--small {
-  font-size: clamp(24px, 1.9vw, 29px);
-  line-height: 1.15;
-  margin-bottom: 10px;
-  max-width: 10em;
-}
 
 /* ---------- Process ---------- */
 
@@ -916,11 +886,12 @@ main:focus {
 }
 
 .process-foot .arrow-link {
+  white-space: nowrap;
   color: var(--ink);
   font-weight: 400;
 }
 
-/* ---------- Areas ---------- */
+/* ---------- Product categories (former Areas) ---------- */
 
 .areas-grid {
   display: grid;
@@ -1000,14 +971,12 @@ main:focus {
   border-left: 1px solid var(--rule);
   align-self: stretch;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 12px;
 }
 
-.area-rows > li.area-row--last {
-  grid-template-columns: 34px minmax(0, 1fr);
-  border-bottom: 0;
-  padding: 18px 0 30px;
-}
 
 .areas-note {
   margin-left: 64px;
@@ -1040,7 +1009,7 @@ main:focus {
   color: var(--accent);
 }
 
-/* ---------- Publishing & Rights (dark) ---------- */
+/* ---------- For Manufacturers (dark band) ---------- */
 
 .publishing {
   background: var(--dark);
@@ -1185,7 +1154,7 @@ main:focus {
   max-width: 520px;
 }
 
-/* ---------- Founder ---------- */
+/* ---------- Company profile ---------- */
 
 .founder {
   padding: 60px 0 48px;
@@ -1453,7 +1422,7 @@ main:focus {
 .footer-grid {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 29fr) minmax(0, 19fr) minmax(0, 22fr) minmax(0, 29fr);
+  grid-template-columns: minmax(0, 28fr) repeat(4, minmax(0, 18fr));
 }
 
 .footer-grid > div {
@@ -1461,7 +1430,7 @@ main:focus {
 }
 
 .footer-col {
-  padding-left: 40px;
+  padding-left: 28px;
   border-left: 1px solid rgba(242, 237, 228, 0.22);
 }
 
@@ -1520,20 +1489,7 @@ main:focus {
   text-underline-offset: 4px;
 }
 
-.footer-contact-text {
-  font-size: 15px;
-  line-height: 1.75;
-  color: #ece6dc;
-  margin-bottom: 30px;
-}
 
-.button--footer {
-  justify-content: space-between;
-  min-width: 228px;
-  font-size: 17px;
-  padding: 15px 30px;
-  margin-bottom: 40px;
-}
 
 .lang-switch--footer {
   font-family: var(--serif);
@@ -1562,10 +1518,6 @@ main:focus {
   color: #ece6dc;
 }
 
-.footer-legal {
-  display: flex;
-  gap: 46px;
-}
 
 .footer-meta {
   margin-left: auto;
@@ -1694,6 +1646,163 @@ main:focus {
 .contact-success {
   font-family: var(--serif);
   font-size: 32px;
+}
+
+/* ---------- Healthcare additions ---------- */
+
+.approach-body--ruled {
+  margin-top: 22px;
+  padding-top: 22px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.direction-note {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--rule);
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--muted);
+  max-width: 460px;
+}
+
+.h-display--long {
+  font-size: clamp(40px, 4vw, 54px);
+  line-height: 1.02;
+}
+
+.area-name a:hover {
+  color: var(--accent);
+}
+
+.area-text .strong-link {
+  font-size: 12.5px;
+}
+
+.areas-grid--full {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.areas-grid--full .areas-list {
+  padding-left: 0;
+}
+
+.area-rows--large > li {
+  grid-template-columns: 34px 260px minmax(0, 1fr) minmax(0, 0.9fr);
+  padding: 22px 0;
+}
+
+.area-rows--large .area-thumb {
+  width: 260px;
+}
+
+.area-rows--large .area-text {
+  font-size: 13.5px;
+}
+
+.services-disclaimer {
+  margin-top: 26px;
+  padding-top: 20px;
+  border-top: 1px solid #e1cdbf;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--muted);
+  max-width: 560px;
+}
+
+.arrow-link--on-dark {
+  color: #ece6dc;
+}
+
+.button--copper {
+  background: var(--copper);
+  border-color: var(--copper);
+  color: #fff;
+}
+
+.button--copper:hover {
+  background: #a06a46;
+}
+
+.legal-text {
+  max-width: 760px;
+}
+
+.legal-text article {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  padding: 26px 0;
+  border-top: 1px solid var(--rule);
+}
+
+.legal-text h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+
+.legal-text p {
+  color: var(--body);
+  line-height: 1.65;
+}
+
+.legal-text p + p {
+  margin-top: 10px;
+}
+
+.legal {
+  padding-top: 20px;
+}
+
+.field-error {
+  font-size: 12.5px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #a3201a;
+}
+
+.contact-form [aria-invalid="true"] {
+  border-bottom-color: #a3201a;
+}
+
+.contact-form textarea[aria-invalid="true"] {
+  border-color: #a3201a;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #9a9a9a;
+}
+
+.contact-form .consent a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.hp {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.form-required {
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+.contact-aside p + p {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--rule);
 }
 
 /* ---------- Responsive ---------- */
@@ -1933,12 +2042,21 @@ main:focus {
     padding-left: 0;
   }
 
-  .area-rows > li.area-row--last {
-    grid-template-columns: 34px minmax(0, 1fr);
-  }
 
   .areas-note {
     margin-left: 0;
+  }
+
+  .area-rows--large > li {
+    grid-template-columns: 34px 200px minmax(0, 1fr);
+  }
+
+  .area-rows--large .area-thumb {
+    width: 200px;
+  }
+
+  .footer-bottom .lang-switch--footer {
+    width: 100%;
   }
 
   .publishing-title {
@@ -2025,9 +2143,6 @@ main:focus {
     border-left: 0;
   }
 
-  .footer-contact {
-    grid-column: 1 / -1;
-  }
 
   .footer-fan {
     width: 40%;
@@ -2073,8 +2188,8 @@ main:focus {
   }
 
   .direction-route {
-    font-size: 30px;
-    gap: 12px;
+    font-size: 24px;
+    gap: 10px;
   }
 
   .rays {
@@ -2095,19 +2210,8 @@ main:focus {
     max-width: none;
   }
 
-  .service-pair {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 24px;
-  }
 
-  .service-pair li {
-    grid-template-columns: 40px minmax(0, 1fr);
-    column-gap: 14px;
-  }
 
-  .service-pair li + li::before {
-    display: none;
-  }
 
   .process-grid {
     grid-template-columns: minmax(0, 1fr);
@@ -2136,9 +2240,18 @@ main:focus {
     grid-template-columns: 30px minmax(0, 1fr);
   }
 
-  .area-thumb {
+  .area-thumb,
+  .area-rows--large .area-thumb {
     grid-column: 2;
     width: 100%;
+  }
+
+  .area-rows--large > li {
+    grid-template-columns: 30px minmax(0, 1fr);
+  }
+
+  .legal-text article {
+    grid-template-columns: 40px minmax(0, 1fr);
   }
 
   .area-main,

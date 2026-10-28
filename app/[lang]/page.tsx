@@ -1,25 +1,32 @@
+import type { Metadata } from "next";
 import { getDict } from "@/content";
-import { isLocale, type Locale } from "@/lib/i18n";
-import { Approach, Areas, Direction, Founder, Hero, LetsTalk, Process, Publishing, Services } from "@/components/sections";
+import { alternates, isLocale, type Locale } from "@/lib/i18n";
+import { Categories, Focus, Hero, LetsTalk, Manufacturers, Perspective, Process, Profile, Services } from "@/components/sections";
 
-// Home sequence as in the approved screenshots: Hero + Direction, Approach, What We Do,
-// Process, Areas of Interest, Publishing & Rights (dark), Founder, Let's Talk.
+export async function generateMetadata({ params }: PageProps<"/[lang]">): Promise<Metadata> {
+  const { lang } = await params;
+  const locale: Locale = isLocale(lang) ? lang : "it";
+  return { alternates: alternates(locale, "home") };
+}
+
+// Home sequence: Hero, Our Focus, From Product to Market, Product categories, Services,
+// Process, For Manufacturers (dark), Profile, final call to action.
 export default async function Home({ params }: PageProps<"/[lang]">) {
   const { lang } = await params;
-  const locale: Locale = isLocale(lang) ? lang : "en";
+  const locale: Locale = isLocale(lang) ? lang : "it";
   const dict = getDict(locale);
   const props = { locale, dict };
 
   return (
     <>
       <Hero {...props} />
-      <Direction {...props} />
-      <Approach {...props} />
+      <Focus {...props} />
+      <Perspective {...props} />
+      <Categories {...props} />
       <Services {...props} />
       <Process {...props} />
-      <Areas {...props} />
-      <Publishing {...props} />
-      <Founder {...props} />
+      <Manufacturers {...props} />
+      <Profile {...props} />
       <LetsTalk {...props} />
     </>
   );

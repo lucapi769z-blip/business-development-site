@@ -77,7 +77,7 @@ export function Fan({ className = "" }: { className?: string }) {
   );
 }
 
-/** Vertical bars of varying height, beside the Publishing & Rights image. */
+/** Vertical bars of varying height, beside the For Manufacturers image. */
 export function Bars() {
   const heights = [96, 112, 64, 100, 116, 84, 104, 60, 92, 82, 98, 116, 90, 76, 114];
   return (
@@ -89,20 +89,15 @@ export function Bars() {
   );
 }
 
-export function PublishingIcon({ name }: { name: string }) {
+export function ManufacturerIcon({ name }: { name: string }) {
   return (
     <span className="icon-ring" aria-hidden="true">
       <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" strokeWidth="1.2">
-        {name === "book" && (
+        {name === "pulse" && <path d="M3.5 13.5h5l2-5 3.2 10 2.3-7 1.5 2h5" strokeLinejoin="round" />}
+        {name === "link" && (
           <>
-            <path d="M13 7.5c-2.2-1.6-5-2-8-1.6v12.2c3-.4 5.8 0 8 1.6 2.2-1.6 5-2 8-1.6V5.9c-3-.4-5.8 0-8 1.6z" />
-            <path d="M13 7.5v12.2M7 9.4c1.6-.1 3 .2 4 .8M7 12.4c1.6-.1 3 .2 4 .8M15 10.2c1-.6 2.4-.9 4-.8M15 13.2c1-.6 2.4-.9 4-.8" />
-          </>
-        )}
-        {name === "person" && (
-          <>
-            <circle cx="13" cy="9.5" r="3.6" />
-            <path d="M5.5 20.5c.8-3.6 3.8-5.6 7.5-5.6s6.7 2 7.5 5.6" />
+            <path d="M11 15l4-4" />
+            <path d="M12.6 8.4l1.7-1.7a3.6 3.6 0 015.1 5.1l-1.7 1.7M13.4 17.6l-1.7 1.7a3.6 3.6 0 01-5.1-5.1l1.7-1.7" />
           </>
         )}
         {name === "document" && (

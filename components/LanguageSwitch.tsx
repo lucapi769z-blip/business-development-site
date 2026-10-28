@@ -5,8 +5,8 @@ import { usePathname } from "next/navigation";
 import { isLocale, pageForSlug, pathFor, type Locale, type PageKey } from "@/lib/i18n";
 
 function currentPage(pathname: string): { locale: Locale; page: PageKey } {
-  const [, lang = "en", slug] = pathname.split("/");
-  const locale: Locale = isLocale(lang) ? lang : "en";
+  const [, lang = "it", slug] = pathname.split("/");
+  const locale: Locale = isLocale(lang) ? lang : "it";
   return { locale, page: slug ? (pageForSlug(locale, slug) ?? "home") : "home" };
 }
 
@@ -14,7 +14,7 @@ export function LanguageSwitch({ label, className = "" }: { label: string; class
   const { locale, page } = currentPage(usePathname());
   return (
     <nav className={`lang-switch ${className}`.trim()} aria-label={label}>
-      {(["en", "it"] as const).map((target, i) => (
+      {(["it", "en"] as const).map((target, i) => (
         <span key={target}>
           {i > 0 && <span className="lang-sep" aria-hidden="true">/</span>}
           <Link
