@@ -12,12 +12,10 @@ export function SiteHeader({ locale, dict }: { locale: Locale; dict: Dict }) {
   const pathname = usePathname();
   useEffect(() => setOpen(false), [pathname]);
 
-  const links = [
-    { href: pathFor(locale, "whatWeDo"), label: dict.nav.whatWeDo },
-    { href: pathFor(locale, "publishing"), label: dict.nav.publishing },
-    { href: pathFor(locale, "founder"), label: dict.nav.founder },
-    { href: pathFor(locale, "contact"), label: dict.nav.contact },
-  ];
+  const links = (["home", "products", "services", "manufacturers", "about", "contact"] as const).map((page) => ({
+    href: pathFor(locale, page),
+    label: dict.nav[page],
+  }));
 
   return (
     <header className={`site-header${open ? " is-open" : ""}`}>

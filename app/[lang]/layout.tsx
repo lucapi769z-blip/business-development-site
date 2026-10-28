@@ -10,7 +10,7 @@ import "../globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { getDict } from "@/content";
-import { isLocale, locales } from "@/lib/i18n";
+import { alternates, isLocale, locales, siteUrl } from "@/lib/i18n";
 
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
@@ -20,10 +20,22 @@ export const dynamicParams = false;
 
 export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Promise<Metadata> {
   const { lang } = await params;
-  const dict = getDict(isLocale(lang) ? lang : "en");
+  const locale = isLocale(lang) ? lang : "it";
+  const dict = getDict(locale);
   return {
+    metadataBase: new URL(siteUrl),
     title: { template: `%s · ${dict.brand}`, default: dict.meta.home.title },
     description: dict.meta.home.description,
+    keywords: [...dict.meta.keywords, ...getDict(locale === "it" ? "en" : "it").meta.keywords],
+    alternates: alternates(locale, "home"),
+    openGraph: {
+      type: "website",
+      siteName: dict.brand,
+      locale: locale === "it" ? "it_IT" : "en_GB",
+      title: dict.meta.home.title,
+      description: dict.meta.home.description,
+      images: [{ url: "/images/hero-hospital-corridor.jpg", width: 1306, height: 968 }],
+    },
   };
 }
 
